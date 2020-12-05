@@ -18,13 +18,13 @@ class Product {
   @Column()
   name: string;
 
-  @Column('decimal', { precision: 13, scale: 2 })
+  @Column('decimal')
   price: number;
 
   @Column('int')
   quantity: number;
 
-  @OneToMany(type => Order, order => order.order_products)
+  @OneToMany(() => OrdersProducts, order_products => order_products.product)
   order_products: OrdersProducts[];
 
   @CreateDateColumn()
